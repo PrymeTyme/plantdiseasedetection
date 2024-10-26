@@ -1,0 +1,58 @@
+.default-img-list {
+  width: 256px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  border: 1px solid gray;
+  justify-content: center;
+  padding: 5px 25px;
+  overflow: hidden;
+  max-height: 110px;
+  transition: max-height 0.5s ease;
+  flex-direction: column;
+}
+
+.default-img-list.expanded {
+  max-height: 500px;
+}
+
+.img-border {
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.default-img {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.img-border:hover {
+  border-color: #646cff;
+  cursor: pointer;
+}
+
+button.chevron-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 46%;
+  margin-top: -25px;
+  margin-bottom: 25px;
+}
+
+button.chevron-button .chevron-icon {
+  height: 45px;
+  width: 45px;
+  color: #646cff;
+}
+
+@media (min-width: 768px) {
+  .default-img-list {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 510px;
+  }
+}

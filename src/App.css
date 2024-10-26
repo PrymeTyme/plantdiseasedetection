@@ -1,0 +1,101 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px 20px;
+}
+
+.result-image {
+  border-radius: 8px;
+  border: 1px solid gray;
+  max-width: 256px;
+  height: 389px;
+}
+
+.run-model-button {
+  padding: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.result-message-container {
+  border-radius: 8px;
+  border: 1px solid gray;
+  width: 256px;
+  height: 389px;
+}
+
+.result-message {
+  text-align: center;
+  margin-top: 50%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+td,
+th {
+  border: 1px solid rgb(26, 26, 26);
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: gray;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+tr:hover {
+  background-color: #646cff;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+.custom-spinner {
+  fill: #4fa94d !important; /* Ensures that the color is applied */
+  color: #4fa94d !important; /* If the spinner uses `color` instead */
+}
+
+@media (min-width: 768px) {
+  .image-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
