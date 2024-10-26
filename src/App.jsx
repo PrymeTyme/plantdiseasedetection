@@ -23,7 +23,7 @@ function App() {
     const loadModel = async () => {
       try {
         modelRef.current = await tf.loadLayersModel(
-          "plantdiseasedetection/model/model.json"
+          "https://prymetyme.github.io/plantdiseasedetection/model/model.json"
         );
         console.log("Model loaded successfully!");
         setIsModelLoaded(true);
