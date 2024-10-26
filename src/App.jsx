@@ -22,9 +22,7 @@ function App() {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        modelRef.current = await tf.loadLayersModel(
-          "https://prymetyme.github.io/plantdiseasedetection/model/model.json"
-        );
+        modelRef.current = await tf.loadLayersModel("/assets/model101.json");
         console.log("Model loaded successfully!");
         setIsModelLoaded(true);
       } catch (err) {
