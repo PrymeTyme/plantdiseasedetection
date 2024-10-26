@@ -22,7 +22,9 @@ function App() {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        modelRef.current = await tf.loadLayersModel("/model/model.json");
+        modelRef.current = await tf.loadLayersModel(
+          "plantdiseasedetection/model/model.json"
+        );
         console.log("Model loaded successfully!");
         setIsModelLoaded(true);
       } catch (err) {
