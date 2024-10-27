@@ -23,7 +23,7 @@ function App() {
     const loadModel = async () => {
       try {
         modelRef.current = await tf.loadLayersModel(
-          "plantdiseasedetection/model/model.json"
+          "./plantdiseasedetection/model/model.json" /// change for developement and build/production dev: ./plantdiseasedetection/model/model.json
         );
         console.log("Model loaded successfully!");
         setIsModelLoaded(true);

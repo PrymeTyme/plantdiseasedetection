@@ -6,7 +6,7 @@
   border: 1px solid gray;
   justify-content: center;
   padding: 5px 25px;
-  overflow: hidden;
+  overflow: scroll;
   max-height: 110px;
   transition: max-height 0.5s ease;
   flex-direction: column;
@@ -54,5 +54,32 @@ button.chevron-button .chevron-icon {
     flex-direction: row;
     justify-content: space-between;
     width: 510px;
+  }
+}
+
+@media (orientation: landscape) {
+  .default-img-list {
+    flex-direction: row;
+    overflow: scroll;
+    max-height: 110px; /* Adjust as needed for portrait */
+  }
+
+  .image-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+/* Styles specifically for portrait orientation */
+@media (orientation: portrait) {
+  .default-img-list {
+    flex-direction: column;
+    overflow: scroll;
+    max-height: 110px; /* Adjust as needed for portrait */
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
