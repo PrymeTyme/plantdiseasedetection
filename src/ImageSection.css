@@ -49,7 +49,7 @@ button.chevron-button .chevron-icon {
   color: #646cff;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 759px) {
   .default-img-list {
     flex-direction: row;
     justify-content: space-between;

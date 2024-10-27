@@ -86,7 +86,7 @@ tr:hover {
   color: #4fa94d !important; /* If the spinner uses `color` instead */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 759px) {
   .image-container {
     flex-direction: row;
     justify-content: space-between;
