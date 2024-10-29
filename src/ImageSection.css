@@ -6,7 +6,7 @@
   border: 1px solid gray;
   justify-content: center;
   padding: 5px 25px;
-  overflow: scroll;
+  overflow-y: scroll;
   max-height: 110px;
   transition: max-height 0.5s ease;
   flex-direction: column;
@@ -60,7 +60,7 @@ button.chevron-button .chevron-icon {
 @media (orientation: landscape) {
   .default-img-list {
     flex-direction: row;
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: 110px; /* Adjust as needed for portrait */
   }
 
@@ -74,7 +74,7 @@ button.chevron-button .chevron-icon {
 @media (orientation: portrait) {
   .default-img-list {
     flex-direction: column;
-    overflow: scroll;
+    overflow-x: scroll;
     max-height: 110px; /* Adjust as needed for portrait */
   }
 
