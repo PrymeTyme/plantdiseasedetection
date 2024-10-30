@@ -40,47 +40,39 @@
   margin-top: 50%;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: separate;
-  border-spacing: 0;
+/* Card Layout Styles */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.card {
+  border: 1px solid #ddd;
   border-radius: 0.5rem;
-  overflow: hidden;
+  padding: 1rem;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-td,
-th {
-  border: 1px solid rgb(26, 26, 26);
-  text-align: left;
-  padding: 8px;
+.card-item {
+  margin-bottom: 0.5rem;
+  text-align: start;
 }
 
-tr:nth-child(even) {
-  background-color: gray;
+.card-item span {
+  font-weight: bold;
+  color: #ddd;
+  margin-right: 0.5rem;
 }
 
-table tr:first-child th:first-child {
-  border-top-left-radius: 0.5rem;
+.card-item:last-child {
+  margin-bottom: 0;
 }
 
-table tr:first-child th:last-child {
-  border-top-right-radius: 0.5rem;
-}
-
-table tr:last-child td:first-child {
-  border-bottom-left-radius: 0.5rem;
-}
-
-table tr:last-child td:last-child {
-  border-bottom-right-radius: 0.5rem;
-}
-
-tr:hover {
-  background-color: #646cff;
-  transition: background-color 0.2s;
-  cursor: pointer;
-}
 .custom-spinner {
   fill: #4fa94d !important; /* Ensures that the color is applied */
   color: #4fa94d !important; /* If the spinner uses `color` instead */

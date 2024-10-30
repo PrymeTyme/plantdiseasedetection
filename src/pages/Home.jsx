@@ -62,7 +62,7 @@ function Home() {
       </p>
       <h2>About Us</h2>
       <p>
-        Learn more about the project, our team, and our goals on the{" "}
+        Learn more about the project on the{" "}
         <Link to={"/plantdiseasedetection/about"}>About </Link>
         page.
       </p>

@@ -5,7 +5,12 @@ import "./index.css";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  createHashRouter,
+} from "react-router-dom";
 import Home from "./pages/Home.jsx";
 
 const Layout = () => {
@@ -18,7 +23,7 @@ const Layout = () => {
   );
 };
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/plantdiseasedetection/",
     element: <Layout />,

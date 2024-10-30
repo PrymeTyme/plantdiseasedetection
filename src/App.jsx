@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import plantImageDefault from "./assets/defaultImages/img7.jpg";
-import { CLASS_NAMES } from "./assets/classNames";
+import linksvg from "./assets/link.svg";
+import { CLASS_NAMES, CLASS_NAMES_OBJ } from "./assets/classNames";
 import UploadSection from "./UploadSection.jsx";
 import ImageSection from "./ImageSection.jsx";
 import { Blocks } from "react-loader-spinner";
@@ -81,12 +82,18 @@ function App() {
         const topValues = await values.array();
         const topIndices = await indices.array();
 
+        console.log(CLASS_NAMES_OBJ[0].disease);
+
         topValues.forEach((element, elementIndex) => {
           element.forEach((value, valueIndex) => {
             const resultIndex = topIndices[elementIndex][valueIndex];
             let detectionObj = {};
             detectionObj = {
-              detection: CLASS_NAMES[resultIndex],
+              detection: CLASS_NAMES_OBJ[resultIndex].disease,
+              cause: CLASS_NAMES_OBJ[resultIndex].cause,
+              treatment: CLASS_NAMES_OBJ[resultIndex].treatment,
+              prevention: CLASS_NAMES_OBJ[resultIndex].prevention,
+              wiki_link: CLASS_NAMES_OBJ[resultIndex].wikipedia_link,
               value: value * 100,
             };
             let isObjName = containsObjectName(detectionObj, detectionArr);
@@ -244,18 +251,50 @@ function App() {
         {isModelRunning ? (
           <div>Waiting for Results...</div>
         ) : (
-          <table>
-            <tr>
-              <th>Disease</th>
-              <th>Probability</th>
-            </tr>
+          <div class="table-container">
             {detection.map((item, index) => (
-              <tr key={index}>
-                <td>{item.detection}</td>
-                <td>{item.value.toFixed(2)}%</td>
-              </tr>
+              <div class="card" key={index}>
+                <div class="card-item">
+                  <span>Disease:</span> {item.detection}
+                </div>
+                <div class="card-item">
+                  <span>Probability:</span> {item.value.toFixed(2)}%
+                </div>
+                <div class="card-item">
+                  <span>Cause:</span> {item.cause}
+                </div>
+                <div class="card-item">
+                  <span>Treatment:</span> {item.treatment}
+                </div>
+                <div class="card-item">
+                  <span>Prevention:</span> {item.prevention}
+                </div>
+                <div className="card-item">
+                  {item.wiki_link ? (
+                    <>
+                      <span>Wiki Link:</span>{" "}
+                      <a href={item.wiki_link} target="_blank">
+                        {" "}
+                        {item.detection}{" "}
+                        <img
+                          src={linksvg}
+                          alt="link"
+                          height={20}
+                          width={20}
+                          style={{
+                            display: "inline-block",
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </a>
+                    </>
+                  ) : (
+                    <span></span>
+                  )}
+                </div>
+              </div>
             ))}
-          </table>
+          </div>
         )}
       </div>
     </>
