@@ -19,3 +19,6 @@ The final model achieved a loss of 0.0226 and an accuracy of 99.22% over ten epo
 ## Quick Demo
 
 ![Quick Demo](https://github.com/PrymeTyme/plantdiseasedetection/blob/master/pdd.gif)
+
+## Live Demo
+[demo](https://prymetyme.github.io/plantdiseasedetection/#/plantdiseasedetection/)
