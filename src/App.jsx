@@ -8,7 +8,7 @@ import ImageSection from "./ImageSection.jsx";
 import { Blocks } from "react-loader-spinner";
 
 import "./App.css";
-import cv from "@techstark/opencv-js"; // Import OpenCV from @techstark/opencv-js
+import cv from "@techstark/opencv-js";
 
 function App() {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
@@ -23,10 +23,9 @@ function App() {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        modelRef.current = await tf.loadLayersModel(
-          "./plantdiseasedetection/model/model.json" /// change for developement and build/production dev: ./plantdiseasedetection/model/model.json
-        );
-        console.log("Model loaded successfully!");
+        const modelUrl = `${import.meta.env.BASE_URL}model/model.json`;
+        modelRef.current = await tf.loadLayersModel(modelUrl);
+        console.log("Model loaded successfully from:", modelUrl);
         setIsModelLoaded(true);
       } catch (err) {
         console.error("Error loading model:", err);
@@ -35,7 +34,6 @@ function App() {
 
     loadModel();
 
-    // Initialize OpenCV
     cv.onRuntimeInitialized = () => {
       console.log("OpenCV is ready!");
     };
@@ -48,7 +46,6 @@ function App() {
         return true;
       }
     }
-
     return false;
   }
 
@@ -82,13 +79,10 @@ function App() {
         const topValues = await values.array();
         const topIndices = await indices.array();
 
-        console.log(CLASS_NAMES_OBJ[0].disease);
-
         topValues.forEach((element, elementIndex) => {
           element.forEach((value, valueIndex) => {
             const resultIndex = topIndices[elementIndex][valueIndex];
-            let detectionObj = {};
-            detectionObj = {
+            let detectionObj = {
               detection: CLASS_NAMES_OBJ[resultIndex].disease,
               cause: CLASS_NAMES_OBJ[resultIndex].cause,
               treatment: CLASS_NAMES_OBJ[resultIndex].treatment,
@@ -96,6 +90,7 @@ function App() {
               wiki_link: CLASS_NAMES_OBJ[resultIndex].wikipedia_link,
               value: value * 100,
             };
+
             let isObjName = containsObjectName(detectionObj, detectionArr);
 
             if (!isObjName) {
@@ -143,13 +138,13 @@ function App() {
       hsv.rows,
       hsv.cols,
       hsv.type(),
-      [10, 100, 20, 0]
+      [10, 100, 20, 0],
     );
     const upperBound = new cv.Mat(
       hsv.rows,
       hsv.cols,
       hsv.type(),
-      [20, 255, 200, 255]
+      [20, 255, 200, 255],
     );
 
     const mask = new cv.Mat();
@@ -159,7 +154,7 @@ function App() {
       src.rows,
       src.cols,
       src.type(),
-      [255, 0, 255, 255]
+      [255, 0, 255, 255],
     );
     const coloredDst = new cv.Mat();
     cv.bitwise_and(pinkColor, pinkColor, coloredDst, mask);
@@ -251,29 +246,33 @@ function App() {
         {isModelRunning ? (
           <div>Waiting for Results...</div>
         ) : (
-          <div class="table-container">
+          <div className="table-container">
             {detection.map((item, index) => (
-              <div class="card" key={index}>
-                <div class="card-item">
+              <div className="card" key={index}>
+                <div className="card-item">
                   <span>Disease:</span> {item.detection}
                 </div>
-                <div class="card-item">
+                <div className="card-item">
                   <span>Probability:</span> {item.value.toFixed(2)}%
                 </div>
-                <div class="card-item">
+                <div className="card-item">
                   <span>Cause:</span> {item.cause}
                 </div>
-                <div class="card-item">
+                <div className="card-item">
                   <span>Treatment:</span> {item.treatment}
                 </div>
-                <div class="card-item">
+                <div className="card-item">
                   <span>Prevention:</span> {item.prevention}
                 </div>
                 <div className="card-item">
                   {item.wiki_link ? (
                     <>
                       <span>Wiki Link:</span>{" "}
-                      <a href={item.wiki_link} target="_blank">
+                      <a
+                        href={item.wiki_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {" "}
                         {item.detection}{" "}
                         <img

@@ -5,14 +5,14 @@ import "./ImageSection.css";
 
 const imagePaths = [];
 
-Object.values(
-  import.meta.glob("./assets/defaultImages/*.jpg", { eager: true })
-).forEach(({ default: path }) => {
-  const url = new URL(path, import.meta.url);
-  const data = {
-    path: url.pathname,
-  };
-  imagePaths.push(data);
+const images = import.meta.glob("./assets/defaultImages/*.jpg", {
+  eager: true,
+});
+
+Object.values(images).forEach((module) => {
+  imagePaths.push({
+    path: module.default,
+  });
 });
 
 function ImageSection({ setPlantImage }) {
@@ -21,6 +21,7 @@ function ImageSection({ setPlantImage }) {
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
   return (
     <div style={{ textAlign: "center" }}>
       <h2>Pick Image:</h2>
@@ -31,7 +32,7 @@ function ImageSection({ setPlantImage }) {
             <img
               className="img-border"
               src={image.path}
-              alt={`image-${index}`}
+              alt={`default-plant-${index}`}
               width={100}
               height={100}
               onClick={() => setPlantImage(image.path)}

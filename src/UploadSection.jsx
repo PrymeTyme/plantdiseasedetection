@@ -1,25 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import uploadIcon from "./assets/upload.svg";
 import "./UploadSection.css";
-import testimg from "./assets/defaultImages/img1.jpg";
 
 function UploadSection({ setPlantImage, plantImage }) {
   const imageUploadRef = useRef(null);
 
   const handleImgUpload = (e) => {
     e.preventDefault();
-    console.log(e.target.files);
+
     imageUploadRef.current.click();
-    //setImgUpload(URL.createObjectURL(e.target.files[0]));
   };
 
   const uploadImageDisplay = () => {
     const uploadedImg = imageUploadRef.current.files[0];
 
-    const cachedURL = URL.createObjectURL(uploadedImg);
+    if (!uploadedImg) return;
 
+    const cachedURL = URL.createObjectURL(uploadedImg);
     setPlantImage(cachedURL);
   };
+
   return (
     <div className="upload-card">
       <img
@@ -28,7 +28,7 @@ function UploadSection({ setPlantImage, plantImage }) {
         className="upload-card-img"
       />
       <div className="upload-card-body">
-        <p>pick or upload you own image</p>
+        <p>Pick or upload your own image</p>
         <form id="form" encType="multipart/form-data">
           <button
             style={{ marginBottom: "10px" }}
@@ -36,7 +36,7 @@ function UploadSection({ setPlantImage, plantImage }) {
             onClick={handleImgUpload}
           >
             <span className="upload-icon">
-              <img src={uploadIcon} alt="icon" width={45} height={45} />
+              <img src={uploadIcon} alt="Upload Icon" width={45} height={45} />
             </span>
           </button>
           <input

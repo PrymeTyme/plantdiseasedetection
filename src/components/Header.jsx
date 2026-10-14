@@ -4,41 +4,23 @@ import "./Header.css";
 
 function Header() {
   const location = useLocation();
+
+  const getActiveStyle = (path) => ({
+    borderColor:
+      location.pathname === path ? "var(--primary-color)" : "transparent",
+    color:
+      location.pathname === path ? "var(--primary-color)" : "var(--text-main)",
+  });
+
   return (
     <nav>
-      <Link
-        to="/plantdiseasedetection/"
-        style={{
-          borderColor:
-            location.pathname === "/plantdiseasedetection/"
-              ? "#646cff"
-              : "transparent",
-        }}
-      >
+      <Link to="/" style={getActiveStyle("/")}>
         Home
       </Link>
-
-      <Link
-        to="/plantdiseasedetection/detect"
-        style={{
-          borderColor:
-            location.pathname === "/plantdiseasedetection/detect"
-              ? "#646cff"
-              : "transparent",
-        }}
-      >
-        Plant Disease Detection
+      <Link to="/detect" style={getActiveStyle("/detect")}>
+        Disease Recognition
       </Link>
-
-      <Link
-        to="/plantdiseasedetection/about"
-        style={{
-          borderColor:
-            location.pathname === "/plantdiseasedetection/about"
-              ? "#646cff"
-              : "transparent",
-        }}
-      >
+      <Link to="/about" style={getActiveStyle("/about")}>
         About
       </Link>
     </nav>

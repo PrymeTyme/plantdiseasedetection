@@ -11,17 +11,15 @@ function Home() {
       <p>
         Our mission is to help in identifying plant diseases efficiently. Upload
         an image of a plant, and our system will analyze it to detect any signs
-        of diseases
+        of diseases.
       </p>
       <h2>How It Works</h2>
 
       <ul className="bullet-point-container">
         <li>
-          {" "}
           <span style={{ fontWeight: "bold" }}> 1. Upload Image: </span>Go to
-          the{" "}
-          <Link to={"/plantdiseasedetection/detect"}>Disease Recognition</Link>{" "}
-          page and upload an image of a plant with suspected diseases.
+          the <Link to="/detect">Disease Recognition</Link> page and upload an
+          image of a plant with suspected diseases.
         </li>
         <li>
           <span style={{ fontWeight: "bold" }}>2. Analysis:</span> Our system
@@ -29,7 +27,6 @@ function Home() {
           diseases.
         </li>
         <li>
-          {" "}
           <span style={{ fontWeight: "bold" }}>3. Results:</span> View the
           results and recommendations for further action.
         </li>
@@ -55,16 +52,13 @@ function Home() {
 
       <h2>Get Started</h2>
       <p>
-        Click on the{" "}
-        <Link to={"/plantdiseasedetection/detect"}>Disease Recognition</Link>{" "}
-        page in the navbar to upload an image and experience the power of our
-        Plant Disease Recognition System!
+        Click on the <Link to="/detect">Disease Recognition</Link> page in the
+        navbar to upload an image and experience the power of our Plant Disease
+        Recognition System!
       </p>
       <h2>About Us</h2>
       <p>
-        Learn more about the project on the{" "}
-        <Link to={"/plantdiseasedetection/about"}>About </Link>
-        page.
+        Learn more about the project on the <Link to="/about">About</Link> page.
       </p>
     </div>
   );

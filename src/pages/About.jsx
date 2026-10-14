@@ -9,18 +9,17 @@ function About() {
     <div className="about-container">
       <h2>About The Dataset</h2>
       <p>
-        {" "}
         This dataset is recreated using offline augmentation from the original
-        dataset.The original dataset can be found{" "}
+        dataset. The original dataset can be found{" "}
         <a
           href="https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset"
           target="_blank"
+          rel="noopener noreferrer"
         >
-          {" "}
           on this kaggle repo
-        </a>{" "}
+        </a>
         . This dataset consists of about 87K rgb images of healthy and diseased
-        crop leaves which is categorized into 38 different classes.The total
+        crop leaves which is categorized into 38 different classes. The total
         dataset is divided into 80/20 ratio of training and validation set
         preserving the directory structure. A new directory containing 33 test
         images is created later for prediction purpose.
@@ -32,7 +31,6 @@ function About() {
       </h2>
       <div>
         <p>
-          {" "}
           I developed a CNN model for detecting plant diseases from images,
           focusing on optimizing precision and recall to handle data imbalance
           effectively. To avoid overshooting the loss function, I set a small
@@ -40,7 +38,7 @@ function About() {
           address underfitting, I increased the neuron count and added
           additional convolutional layers to capture intricate image features
           with ReLU activation and max-pooling, combined with dense layers for
-          effective classification.{" "}
+          effective classification.
         </p>
 
         <p>

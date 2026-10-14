@@ -5,13 +5,8 @@ import "./index.css";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-  createHashRouter,
-} from "react-router-dom";
 import Home from "./pages/Home.jsx";
+import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -25,19 +20,19 @@ const Layout = () => {
 
 const router = createHashRouter([
   {
-    path: "/plantdiseasedetection/",
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/plantdiseasedetection/",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "/plantdiseasedetection/about",
+        path: "/about",
         element: <About />,
       },
       {
-        path: "/plantdiseasedetection/detect",
+        path: "/detect",
         element: <App />,
       },
     ],
@@ -45,5 +40,7 @@ const router = createHashRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
 );
